@@ -1,0 +1,11 @@
+ppppp=5
+pppp=10
+ppp=23
+pp=36
+p=49
+mp=62
+mf=75
+f=88
+ff=101
+fff=114
+ffff=127

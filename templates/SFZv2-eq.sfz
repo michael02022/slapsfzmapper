@@ -1,0 +1,397 @@
+//===== SAMPLE ====//
+#define $LoopMode loop_continuous
+#define $LoopType forward
+
+#define $SmplMaxOffset 10000
+#define $SmplRandOffset 0
+
+#define $SmplMaxDelay 1
+#define $SmplRandDelay 0
+
+#define $SmplDirection forward
+
+#define $NoteOffset 0
+#define $PitchTranspose 0
+
+#define $SampleQuality 2
+
+//=== MODULATION ===//
+#define $MaxVolMod 8
+#define $MaxFilMod 5000
+#define $MaxPitMod 35
+
+//=== BEND RANGE ===//
+#define $LOBEND -98304
+#define $HIBEND 98304
+
+//===== PANNING ====//
+#define $PanKeyCen 60
+#define $PanKeyTrk 0
+#define $PanVelTrk 0
+
+//LFO
+#define $PanLFOMaxDelay 4
+#define $PanLFOMaxFade 4
+#define $PanLFOMaxFreq 15
+#define $PanLFOMaxPan 100
+#define $PanLFOWaveform 1
+
+//==== AMPLITUDE ===//
+#define $AmpVelTrk 100
+#define $AmpKeyTrk 0
+#define $AmpKeyCen 60
+#define $AmpRandom 0
+
+//EG
+#define $AmpDelMaxTime 4
+#define $AmpAtkMaxTime 4
+#define $AmpHldMaxTime 4
+#define $AmpDecMaxTime 8
+#define $AmpRelMaxTime 4
+
+#define $AmpShpAtk 1
+#define $AmpShpDec -7
+#define $AmpShpRel -7.5
+
+//LFO
+#define $AmpLFOMaxDelay 4
+#define $AmpLFOMaxFade 4
+#define $AmpLFOMaxFreq 15
+#define $AmpLFOMaxVol 12
+#define $AmpLFOWaveform 1
+
+//===== FILTER =====//
+#define $FILTYPE lpf_2p
+#define $FilKeyCen 60
+#define $FilKeyTrk 0
+#define $FilVelTrk 0
+#define $FilRandom 0
+
+#define $MaxCutoff 11970
+#define $MaxResonance 40
+
+//EG
+#define $FilDelMaxTime 4
+#define $FilAtkMaxTime 4
+#define $FilHldMaxTime 4
+#define $FilDecMaxTime 8
+#define $FilRelMaxTime 4
+
+#define $FilShpAtk 1
+#define $FilShpDec -7
+#define $FilShpRel -7.5
+
+//LFO
+#define $FilLFOMaxDelay 4
+#define $FilLFOMaxFade 4
+#define $FilLFOMaxFreq 15
+#define $FilLFOMaxCutoff 10000
+#define $FilLFOWaveform 1
+
+//===== PITCH =====//
+#define $PitKeyTrk 100
+#define $PitVelTrk 0
+#define $PitRandom 0
+
+#define $PitDepth 2400
+
+//EG
+#define $PitDelMaxTime 4
+#define $PitAtkMaxTime 4
+#define $PitHldMaxTime 4
+#define $PitDecMaxTime 4
+#define $PitRelMaxTime 4
+
+#define $PitShpAtk 0
+#define $PitShpDec 0
+#define $PitShpRel 0
+
+//LFO
+#define $PitLFOMaxDelay 4
+#define $PitLFOMaxFade 4
+#define $PitLFOMaxFreq 15
+#define $PitLFOMaxPitch 100
+#define $PitLFOWaveform 1
+
+//==================
+//==================
+label_cc1=🛠Modulation
+label_cc7=🛠Volume
+label_cc10=🛠Pan
+label_cc11=🛠Expression
+
+label_cc12=🔘EQ LOW Freq
+label_cc13=🔘EQ LOW Q
+label_cc14=🔘EQ LOW Gain
+
+label_cc15=🔘EQ MID Freq
+label_cc16=🔘EQ MID Q
+label_cc17=🔘EQ MID Gain
+
+label_cc18=🔘EQ HIGH Freq
+label_cc19=🔘EQ HIGH Q
+label_cc20=🔘EQ HIGH Gain
+
+label_cc74=📉CUTOFF
+label_cc71=📉RESONANCE
+
+label_cc21=🔊AMP Delay
+label_cc22=🔊AMP Attack
+label_cc23=🔊AMP Hold
+label_cc25=🔊AMP Decay
+label_cc24=🔊AMP Sustain
+label_cc26=🔊AMP Release
+
+label_cc33=📉FIL Height
+label_cc27=📉FIL Delay
+label_cc28=📉FIL Attack
+label_cc29=📉FIL Hold
+label_cc31=📉FIL Decay
+label_cc30=📉FIL Sustain
+label_cc32=📉FIL Release
+
+label_cc34=🔔PIT Delay
+label_cc35=🔔PIT Attack
+label_cc36=🔔PIT Hold
+label_cc38=🔔PIT Decay
+label_cc37=🔔PIT Sustain
+label_cc39=🔔PIT Release
+label_cc40=🔔PIT Depth
+
+label_cc41=🔊LFO AMP Delay
+label_cc42=🔊LFO AMP Attack
+label_cc43=🔊LFO AMP Speed
+label_cc44=🔊LFO AMP Amount
+label_cc45=🔊LFO AMP Phase
+
+label_cc46=📉LFO FIL Delay
+label_cc47=📉LFO FIL Attack
+label_cc48=📉LFO FIL Speed
+label_cc49=📉LFO FIL Amount
+label_cc50=📉LFO FIL Phase
+
+label_cc51=🔔LFO PIT Delay
+label_cc52=🔔LFO PIT Attack
+label_cc53=🔔LFO PIT Speed
+label_cc54=🔔LFO PIT Amount
+label_cc55=🔔LFO PIT Phase
+
+label_cc56=⚖️LFO PAN Delay
+label_cc57=⚖️LFO PAN Attack
+label_cc58=⚖️LFO PAN Speed
+label_cc59=⚖️LFO PAN Amount
+label_cc60=⚖️LFO PAN Phase
+
+label_cc117=⚙️Sample Offset
+label_cc118=⚙️Sample Delay
+label_cc119=⚙️Stereo Width
+
+set_cc12=64
+set_cc13=127
+set_cc14=64
+
+set_cc15=64
+set_cc16=127
+set_cc17=64
+
+set_cc18=64
+set_cc19=127
+set_cc20=64
+
+set_cc74=127
+set_cc71=0
+
+set_cc21=0
+set_cc22=0
+set_cc23=0
+set_cc25=127
+set_cc24=127
+set_cc26=1
+
+set_cc33=127
+set_cc27=0
+set_cc28=0
+set_cc29=0
+set_cc31=127
+set_cc30=127
+set_cc32=0
+
+set_cc34=0
+set_cc35=0
+set_cc36=0
+set_cc38=0
+set_cc37=127
+set_cc39=0
+set_cc40=0
+
+set_cc41=0
+set_cc42=0
+set_cc43=0
+set_cc44=0
+set_cc45=0
+
+set_cc46=0
+set_cc47=0
+set_cc48=0
+set_cc49=0
+set_cc50=0
+
+set_cc51=0
+set_cc52=0
+set_cc53=45
+set_cc54=0
+set_cc55=0
+
+set_cc117=0
+set_cc118=0
+set_cc119=127
+
+note_offset=$NoteOffset
+
+//sample_quality=$SampleQuality
+
+<global>
+// INITIALITION
+lobend=$LOBEND hibend=$HIBEND
+pan_keycenter=$PanKeyCen pan_keytrack=$PanKeyTrk pan_veltrack=$PanVelTrk
+amp_veltrack=$AmpVelTrk amp_keytrack=$AmpKeyTrk amp_keycenter=$AmpKeyCen amp_random=$AmpRandom
+//loop_mode=$LoopMode
+//loop_type=$LoopType
+
+// EQUALIZER
+eq1_freq=30
+eq1_freqcc12=600
+eq1_bw=0.0001
+eq1_bwcc13=4
+eq1_gain=-24
+eq1_gaincc14=48
+
+eq2_freq=100
+eq2_freqcc15=6000
+eq2_bw=0.0001
+eq2_bwcc16=4
+eq2_gain=-24
+eq2_gaincc17=48
+
+eq3_freq=1000
+eq3_freqcc18=16000
+eq3_bw=0.0001
+eq3_bwcc19=4
+eq3_gain=-24
+eq3_gaincc20=48
+
+// AMPLITUDE
+eg10_ampeg=1
+eg10_sustain=4
+eg10_level0=0 	eg10_time0=0 // Initialize
+eg10_level1=0 	eg10_time1=0 eg10_time1_oncc21=$AmpDelMaxTime // Delay
+eg10_level2=1 	eg10_time2=0 eg10_time2_oncc22=$AmpAtkMaxTime eg10_shape2=$AmpShpAtk // Attack
+eg10_level3=1 	eg10_time3=0 eg10_time3_oncc23=$AmpHldMaxTime // Hold
+eg10_level4=0 	eg10_level4_oncc24=1 eg10_time4=0 eg10_time4_oncc25=$AmpDecMaxTime eg10_shape4=$AmpShpDec // Decay + Sustain (level 4 cc107)
+eg10_level5=0   eg10_time5=0 eg10_time5_oncc26=$AmpRelMaxTime eg10_shape5=$AmpShpRel // Release
+
+// FILTER
+fil_type=$FILTYPE fil_keycenter=$FilKeyCen fil_keytrack=$FilKeyTrk fil_veltrack=$FilVelTrk fil_random=$FilRandom
+
+cutoff=30
+cutoff_oncc74=$MaxCutoff
+resonance=0
+resonance_oncc71=$MaxResonance
+
+eg20_sustain=4
+eg20_level0=0 	eg20_time0=0 // Initialize
+eg20_level1=0 	eg20_time1=0 eg20_time1_oncc27=$FilDelMaxTime // Delay
+eg20_level2=1 	eg20_time2=0 eg20_time2_oncc28=$FilAtkMaxTime eg20_shape2=$FilShpAtk // Attack
+eg20_level3=1 	eg20_time3=0 eg20_time3_oncc29=$FilHldMaxTime // Hold
+eg20_level4=0 	eg20_level4_oncc30=1 eg20_time4=0 eg20_time4_oncc31=$FilDecMaxTime eg20_shape4=$FilShpDec // Decay + Sustain (level 4 cc107)
+eg20_level5=0   eg20_time5=0 eg20_time5_oncc32=$FilRelMaxTime eg20_shape5=$FilShpRel // Release
+
+eg20_cutoff=0
+eg20_cutoff_oncc33=20000 // fil depth
+
+// PITCH
+pitch_keytrack=$PitKeyTrk pitch_veltrack=$PitVelTrk pitch_random=$PitRandom
+
+eg30_sustain=4
+eg30_level0=0 	eg30_time0=0 // Initialize
+eg30_level1=0 	eg30_time1=0 eg30_time1_oncc34=$PitDelMaxTime // Delay
+eg30_level2=1 	eg30_time2=0 eg30_time2_oncc35=$PitAtkMaxTime eg20_shape2=$PitShpAtk // Attack
+eg30_level3=1 	eg30_time3=0 eg30_time3_oncc36=$PitHldMaxTime // Hold
+eg30_level4=0 	eg30_level4_oncc37=1 eg30_time4=0 eg30_time4_oncc38=$PitDecMaxTime eg30_shape4=$PitShpDec // Decay + Sustain (level 4 cc107)
+eg30_level5=0   eg30_time5=0 eg30_time5_oncc39=$PitRelMaxTime eg20_shape5=$PitShpRel // Release
+
+eg30_pitch=0
+eg30_pitch_oncc40=$PitDepth
+
+// ==========LFOs============
+//--------AMPLITUDE----------
+lfo01_delay=0
+lfo01_delay_oncc41=$AmpLFOMaxDelay
+lfo01_fade=0
+lfo01_fade_oncc42=$AmpLFOMaxFade
+lfo01_freq=0
+lfo01_freq_oncc43=15
+lfo01_volume=0
+lfo01_volume_oncc1=$MaxVolMod 
+lfo01_volume_oncc44=$AmpLFOMaxVol
+lfo01_phase=0
+lfo01_phase_oncc45=1
+lfo01_wave=$AmpLFOWaveform
+
+//----------FILTER------------
+lfo02_delay=0
+lfo02_delay_oncc46=$FilLFOMaxDelay
+lfo02_fade=0
+lfo02_fade_oncc47=$FilLFOMaxFade
+lfo02_freq=0
+lfo02_freq_oncc48=15
+lfo02_cutoff=0
+lfo01_cutoff_oncc1=$MaxFilMod
+lfo02_cutoff_oncc49=$FilLFOMaxCutoff
+lfo02_wave=$FilLFOWaveform
+lfo02_phase=0
+lfo02_phase_oncc50=1
+
+//----------PITCH------------
+lfo03_delay=0
+lfo03_delay_oncc51=$PitLFOMaxDelay
+lfo03_fade=0
+lfo03_fade_oncc52=$PitLFOMaxFade
+lfo03_freq=0
+lfo03_freq_oncc53=15
+lfo03_pitch=0
+lfo01_pitch_oncc1=$MaxPitMod
+lfo03_pitch_oncc54=$PitLFOMaxPitch
+lfo03_wave=$PitLFOWaveform
+lfo03_phase=0
+lfo03_phase_oncc55=1
+
+//----------PANNING------------
+lfo04_delay=0
+lfo04_delay_oncc56=$PanLFOMaxDelay
+lfo04_fade=0
+lfo04_fade_oncc57=$PanLFOMaxFade
+lfo04_freq=0
+lfo04_freq_oncc58=15
+lfo04_pan=0
+lfo04_pan_oncc59=$PanLFOMaxPan
+lfo04_wave=$PanLFOWaveform
+lfo04_phase=0
+lfo04_phase_oncc60=1
+
+//===========EXTRAS===========
+offset=0
+offset_oncc117=$SmplMaxOffset
+offset_random=$SmplRandOffset
+
+direction=$SmplDirection
+
+delay=0
+delay_oncc118=$SmplMaxDelay
+
+width=0
+width_oncc119=100
+
+transpose=$PitchTranspose
+
+//MAPPING

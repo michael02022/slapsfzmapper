@@ -1,0 +1,263 @@
+//===== SAMPLE ====//
+#define $LoopMode loop_continuous
+#define $LoopType forward
+
+#define $SmplMaxOffset 10000
+#define $SmplRandOffset 0
+
+#define $SmplMaxDelay 1
+#define $SmplRandDelay 0
+
+#define $SmplDirection forward
+
+#define $NoteOffset 0
+#define $PitchTranspose 0
+
+#define $SampleQuality 2
+
+//=== MODULATION ===//
+#define $MaxVolMod 8
+#define $MaxFilMod 5000
+#define $MaxPitMod 35
+
+//=== BEND RANGE ===//
+#define $LOBEND -98304
+#define $HIBEND 98304
+
+//===== PANNING ====//
+#define $PanKeyCen 60
+#define $PanKeyTrk 0
+#define $PanVelTrk 0
+
+//==== AMPLITUDE ===//
+#define $AmpVelTrk 100
+#define $AmpKeyTrk 0
+#define $AmpKeyCen 60
+#define $AmpRandom 0
+
+//EG
+#define $AmpDelMaxTime 4
+#define $AmpAtkMaxTime 4
+#define $AmpHldMaxTime 4
+#define $AmpDecMaxTime 8
+#define $AmpRelMaxTime 4
+
+//LFO
+#define $AmpLFOMaxFreq 15
+#define $AmpLFOMaxVol 12
+
+//===== FILTER =====//
+#define $FILTYPE lpf_2p
+#define $FilKeyCen 60
+#define $FilKeyTrk 0
+#define $FilVelTrk 0
+#define $FilRandom 0
+
+#define $MaxCutoff 11970
+#define $MaxResonance 40
+
+//EG
+#define $FilDelMaxTime 4
+#define $FilAtkMaxTime 4
+#define $FilHldMaxTime 4
+#define $FilDecMaxTime 8
+#define $FilRelMaxTime 4
+
+//LFO
+#define $FilLFOMaxFreq 15
+#define $FilLFOMaxCutoff 10000
+
+//===== PITCH =====//
+#define $PitKeyTrk 100
+#define $PitVelTrk 0
+#define $PitRandom 0
+
+#define $PitDepth 2400
+
+//EG
+#define $PitDelMaxTime 4
+#define $PitAtkMaxTime 4
+#define $PitHldMaxTime 4
+#define $PitDecMaxTime 4
+#define $PitRelMaxTime 4
+
+//LFO
+#define $PitLFOMaxFreq 15
+#define $PitLFOMaxPitch 100
+
+//==================
+//==================
+label_cc1=🛠Modulation
+label_cc7=🛠Volume
+label_cc10=🛠Pan
+label_cc11=🛠Expression
+
+label_cc74=📉CUTOFF
+label_cc71=📉RESONANCE
+
+label_cc21=🔊AMP Delay
+label_cc22=🔊AMP Attack
+label_cc23=🔊AMP Hold
+label_cc25=🔊AMP Decay
+label_cc24=🔊AMP Sustain
+label_cc26=🔊AMP Release
+
+label_cc33=📉FIL Height
+label_cc27=📉FIL Delay
+label_cc28=📉FIL Attack
+label_cc29=📉FIL Hold
+label_cc31=📉FIL Decay
+label_cc30=📉FIL Sustain
+label_cc32=📉FIL Release
+
+label_cc34=🔔PIT Delay
+label_cc35=🔔PIT Attack
+label_cc36=🔔PIT Hold
+label_cc38=🔔PIT Decay
+label_cc37=🔔PIT Sustain
+label_cc39=🔔PIT Release
+label_cc40=🔔PIT Depth
+
+label_cc43=🔊LFO AMP Speed
+label_cc44=🔊LFO AMP Amount
+
+label_cc48=📉LFO FIL Speed
+label_cc49=📉LFO FIL Amount
+
+label_cc53=🔔LFO PIT Speed
+label_cc54=🔔LFO PIT Amount
+
+label_cc117=⚙️Sample Offset
+label_cc118=⚙️Sample Delay
+label_cc119=⚙️Stereo Width
+
+set_cc74=127
+set_cc71=0
+
+set_cc21=0
+set_cc22=0
+set_cc23=0
+set_cc25=127
+set_cc24=127
+set_cc26=1
+
+set_cc33=127
+set_cc27=0
+set_cc28=0
+set_cc29=0
+set_cc31=127
+set_cc30=127
+set_cc32=0
+
+set_cc34=0
+set_cc35=0
+set_cc36=0
+set_cc38=0
+set_cc37=127
+set_cc39=0
+set_cc40=0
+
+set_cc43=0
+set_cc44=0
+
+set_cc48=0
+set_cc49=0
+
+set_cc53=45
+set_cc54=0
+
+set_cc117=0
+set_cc118=0
+set_cc119=127
+
+note_offset=$NoteOffset
+
+//sample_quality=$SampleQuality
+
+<global>
+// INITIALITION
+lobend=$LOBEND hibend=$HIBEND
+pan_keycenter=$PanKeyCen pan_keytrack=$PanKeyTrk pan_veltrack=$PanVelTrk
+amp_veltrack=$AmpVelTrk amp_keytrack=$AmpKeyTrk amp_keycenter=$AmpKeyCen amp_random=$AmpRandom
+//loop_mode=$LoopMode
+//loop_type=$LoopType
+
+// AMPLITUDE
+//ampeg_start=0
+ampeg_delay=0 ampeg_delay_oncc21=$AmpDelMaxTime
+ampeg_attack=0 ampeg_attack_oncc22=$AmpAtkMaxTime
+ampeg_hold=0 ampeg_hold_oncc23=$AmpHldMaxTime
+ampeg_sustain=0 ampeg_sustain_oncc24=100
+ampeg_decay=0 ampeg_decay_oncc25=$AmpDecMaxTime
+ampeg_release=0 ampeg_release_oncc26=$AmpRelMaxTime
+
+// FILTER
+fil_type=$FILTYPE fil_keycenter=$FilKeyCen fil_keytrack=$FilKeyTrk fil_veltrack=$FilVelTrk fil_random=$FilRandom
+
+cutoff=30
+cutoff_oncc74=$MaxCutoff
+resonance=0
+resonance_oncc71=$MaxResonance
+
+fileg_delay=0 fileg_delay_oncc27=$FilDelMaxTime
+fileg_attack=0 fileg_attack_oncc28=$FilAtkMaxTime
+fileg_hold=0 fileg_hold_oncc29=$FilHldMaxTime
+fileg_sustain=0 fileg_sustain_oncc30=100
+fileg_decay=0 fileg_decay_oncc31=$FilDecMaxTime
+fileg_release=0 fileg_release_oncc32=$FilRelMaxTime
+
+fileg_depth=0
+fileg_depth_oncc33=$PitDepth
+
+// PITCH
+pitch_keytrack=$PitKeyTrk pitch_veltrack=$PitVelTrk pitch_random=$PitRandom
+
+pitcheg_delay=0 pitcheg_delay_oncc34=$PitDelMaxTime
+pitcheg_attack=0 pitcheg_attack_oncc35=$PitAtkMaxTime
+pitcheg_hold=0 pitcheg_hold_oncc36=$PitHldMaxTime
+pitcheg_sustain=0 pitcheg_sustain_oncc37=100
+pitcheg_decay=0 pitcheg_decay_oncc38=$PitDecMaxTime
+pitcheg_release=0 pitcheg_release_oncc39=$PitRelMaxTime
+
+pitcheg_depth=0
+pitcheg_depth_oncc40=$PitDepth
+
+// ==========LFOs============
+//--------AMPLITUDE----------
+amplfo_depth=0
+amplfo_depth_oncc1=$MaxVolMod 
+amplfo_depth_oncc44=$AmpLFOMaxVol
+amplfo_freq=0
+amplfo_freq_oncc43=15
+
+//----------FILTER------------
+fillfo_depth=0
+fillfo_depth_oncc1=$MaxFilMod
+fillfo_depth_oncc49=$FilLFOMaxCutoff
+fillfo_freq=0
+fillfo_freq_oncc48=15
+
+
+//----------PITCH------------
+pitchlfo_depth=0
+pitchlfo_depth_oncc1=$MaxPitMod
+pitchlfo_depth_oncc54=$PitLFOMaxPitch
+pitchlfo_freq=0
+pitchlfo_freq_oncc53=15
+
+//===========EXTRAS===========
+offset=0
+offset_oncc117=$SmplMaxOffset
+offset_random=$SmplRandOffset
+
+direction=$SmplDirection
+
+delay=0
+delay_oncc118=$SmplMaxDelay
+
+width=0
+width_oncc119=100
+
+transpose=$PitchTranspose
+
+//MAPPING
