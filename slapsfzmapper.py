@@ -167,7 +167,7 @@ def get_group_by_name(ls, str, sep, offset, name_off_ls):
 def sort_list_by_root(ls, sep, offset, center):
     result = []
     str_result = []
-    if offset == False:
+    if offset == False and not isinstance(offset, int):
         return ls
     elif offset == None and center == None:
         for i in range(len(ls)):
@@ -197,28 +197,30 @@ def sort_list_by_root(ls, sep, offset, center):
 def reformat(str, sep, offset, name_off_ls):
     # print(str)
     # print(str_ls)
+    '''
     if len(name_off_ls) == 1:
         new_str = []
         new_str.append(get_str(str, sep, offset))
         new_str.append(0) # the [offset] thing from get_names_list() will be 0, so here we make sure we select the entire name and not the first char
         #print(new_str)
     else:
-        full_name = ""
-        # print(re.split(sep, str_ls[i]))
-        # get full name
-        for j in range(len(name_off_ls)):
-            full_name += get_str(str, sep, name_off_ls[j])
-            if j == (len(name_off_ls) - 1):
-                break
-            full_name += "_"
-            # print(full_name)
-        new_str = re.split(sep, str)
-        new_str[offset] = full_name
-        # print(new_str)
-        full_name = ""
-        # replace first element with the new full name
-        # for j in range(len(current)):
-        #     print(current[j])
+    '''
+    full_name = ""
+    # print(re.split(sep, str_ls[i]))
+    # get full name
+    for j in range(len(name_off_ls)):
+        full_name += get_str(str, sep, name_off_ls[j])
+        if j == (len(name_off_ls) - 1):
+            break
+        full_name += "_"
+        # print(full_name)
+    new_str = re.split(sep, str)
+    new_str[offset] = full_name
+    # print(new_str)
+    full_name = ""
+    # replace first element with the new full name
+    # for j in range(len(current)):
+    #     print(current[j])
     return new_str
 
 def gen_vel_curve(vel_ls, growth, min_amp):
@@ -868,10 +870,10 @@ def write_sfz(header, sfzgroup, filename, outpath):
             pass
     
     # write sfz file
-    f_sfz = open(os.path.normpath(outpath + "\\" + filename + ".sfz"), "w", encoding="utf8")
+    f_sfz = open(os.path.normpath(outpath + "\\" + str(filename) + ".sfz"), "w", encoding="utf8")
     f_sfz.write(sfz_content)
     f_sfz.close()
-    print(f"""{os.path.normpath(filename + ".sfz")} written.""")
+    print(f"""{os.path.normpath(str(filename) + ".sfz")} written.""")
 
 
 if __name__ == "__main__":
