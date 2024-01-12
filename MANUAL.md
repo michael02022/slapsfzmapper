@@ -110,19 +110,19 @@ Write which kind are the elements from the filename based on the separator. This
 These lists of types of data only will be applied to filenames that has the same size of elements. For example, `-ls "name velraw c4"` is 3 elements of size, so it will only list the files that has the same size of elements in their filename:
 ```
 ================
-Piano_110_g4.wav
+Piano_110_45.wav
 ================
 -sep "_"
 --------
--ls  "name velraw c4"
+-ls  "name velraw root"
  |      v     v    v
- └>  Piano _ 110 _ g5.wav
+ └>  Piano _ 110 _ 45.wav
            ^     ^
           sep   sep
 OK -------------------
 
 ================
-Piano_110_g4_rr2.wav
+Piano_110_76_rr2.wav
 ================
 SKIPPED (ls has 3, this one 4)
 ```
