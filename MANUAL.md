@@ -261,5 +261,21 @@ The spread `none` will generate the region with the opcode `key`. If for some re
 
 # 6. Miscellaneous
 
+## Templates
+You can insert SFZ templates to the mappings. This is for having basic controls (envelopes, LFOs, etc) to the user with the GUI of the SFZ player (such as sfizz and Sforzando).
+These templates are between `<control>` and `<group>` header, so in case you want to make a custom template, you can use `<global>` `<master>` in them.
+
+To assign the template, you have to write it with the extension. The template will be searched in the `templates` folder.
+
+Usage: `-tmpl "SFZv1.sfz"`
+
+The current templates are:
+* SFZv1.sfz - SFZ v1 opcodes for envelopes and LFOs (amp, filter and pitch), basic. Recommended for the lowest CPU usage.
+* SFZv1-eq.sfz - same as before but including a 3 band EQ (CPU intensive)
+* SFZv2.sfz - SFZ v2 opcodes for envelopes and LFOs (amp, filter and pitch), you have more controls with this one (CPU intensive)
+* SFZv2-eq.sfz - same as before but including a 3 band EQ (CPU intensive)
+
+These templates has more edit options if you open them with a text editor thanks to the `#define` values
+
 ## Mono L / R samples
 If the sample has the suffix `-L` `-R`, it will add the opcode `pan=` so we can have the intented stereo sample (like early AKAI libraries)
