@@ -35,6 +35,6 @@ Pno-N-Elec_110_F#3.wav
 ```
 Commands for this case:
 ```
-[command to run slapsfzmapper.py] -i "F:\my_samples\ensoniq-ts12\" -sep "_" -ls "name velraw c4"
+[command to run slapsfzmapper.py] -i "F:\my_samples\ensoniq-ts12" -sep "_" -ls "name velraw c4"
 ```
 For more details, check the Wiki tab or MANUAL.md
