@@ -1,5 +1,3 @@
-# VERSION 0.1
-
 import re
 import sys
 import argparse
@@ -480,17 +478,19 @@ def process_regions(__group, key_mode, key_offset, center, vel_mode, vel_offset,
     keycenters = []
     vel_opcodes = []
     result = ""
+    rr_count = 0
     #if str(sfz_header) == "" and rr_idx == 0 and rr != False:
     #    result += f"<global>\n"
 
     #if rr_len > 1 and rr_idx == 0:
     #    result += f"seq_length={rr_len}\n"
     
-    if rr_len > 1:
-        rr_step += 1
-        result += f"<group> seq_length={rr_len} seq_position={rr_step}\n"
-    else:
-        result += f"<group>\n"
+    if rr_idx == 0:
+        if rr_len > 1:
+            rr_step += 1
+            result += f"<group> seq_length={rr_len} seq_position={rr_step}\n"
+        else:
+            result += f"<group>\n"
 
     vel_list = []
 
@@ -610,7 +610,6 @@ def process_regions(__group, key_mode, key_offset, center, vel_mode, vel_offset,
                     if vel_set[idx_a] == process_vel(get_str(_group[idx_b], sep, vel_offset), vel_lines):
                         group.append(_group[idx_b])
             elif vel_mode[1] == "veldyn":
-                # TODO FIX _group
                 for idx_b in range(len(_group)): # ordena los indexes con los velocities
                     #print(get_str(_group[idx_b], sep, vel_offset))
                     if vel_set[idx_a] == process_veldyn(get_str(_group[idx_b], sep, vel_offset), _vel_set):
@@ -777,6 +776,19 @@ def process_regions(__group, key_mode, key_offset, center, vel_mode, vel_offset,
                                 result += f"<region> sample={group[grp_idx]} key={keycenters[grp_idx]} {vel_opcodes[grp_idx]} {misc_opcodes}\n"
         if key_mode != "none":
             result += "\n"
+        
+        rr_count += 1
+        if rr_count == len(vel_set):
+            rr_step += 1
+
+        if rr_step == (rr_len + 1):
+            pass
+        else:
+            if rr_len > 1:
+                result += f"<group> seq_length={rr_len} seq_position={rr_step}\n"
+            else:
+                result += f"<group>\n"
+        
     return result
 
 def generate_path(dots, ls):
@@ -1102,7 +1114,10 @@ if __name__ == "__main__":
         # reformat(file_list, sep, name[1], [0, 1, 3])
         # list_names = get_names_list(file_list, sep, name[1], name_off_ls) [:-1]
         if rr[0]:
-            _name_off_ls = name_off_ls[:-1] # remove the rr offset for name
+            if len(name_off_ls) == 1:
+                _name_off_ls = name_off_ls
+            else:
+                _name_off_ls = name_off_ls[:-1] # remove the rr offset from name
         else:
             _name_off_ls = name_off_ls
         list_names = get_names_list(file_list, sep, name[1], _name_off_ls)
@@ -1113,6 +1128,7 @@ if __name__ == "__main__":
             current_grp = get_group_by_name(file_list, list_names[name_idx], sep, name[1], _name_off_ls)
             if rr[0]:
                 rr_list = get_rr_list(current_grp, sep, rr[1])
+                print(rr_list)
                 rr_len = len(rr_list)
                 for rr_idx in range(rr_len):
                     rr_group = get_group_by_name(current_grp, rr_list[rr_idx], sep, rr[1], [rr[1]])
@@ -1126,6 +1142,7 @@ if __name__ == "__main__":
                 group_sfz = ""
             else:
                 rr_idx = 0
+                rr_len = 0
                 sorted_grp = sort_list_by_root(current_grp, sep, root[1], root[0])
                 sfz_name = reformat(current_grp[0], sep, name[1], _name_off_ls)[name[1]]
                 # process region
@@ -1134,7 +1151,10 @@ if __name__ == "__main__":
                 write_sfz(str(sfz_header), group_sfz, sfz_name, p_out)
     else:
         if rr[0]:
-            _name_off_ls = name_off_ls[:-1]
+            if len(name_off_ls) == 1:
+                _name_off_ls = name_off_ls
+            else:
+                _name_off_ls = name_off_ls[:-1]
         else:
             _name_off_ls = name_off_ls
         if rr[0]:
@@ -1153,6 +1173,7 @@ if __name__ == "__main__":
                 group_sfz += _group_sfz
         else:
             rr_idx = 0
+            rr_len = 0
             sorted_grp = sort_list_by_root(file_list, sep, root[1], root[0]) # the entire folder is one instrument
             sfz_name = None
             # process region
