@@ -165,8 +165,9 @@ def get_group_by_name(ls, str, sep, offset, name_off_ls):
 def sort_list_by_root(ls, sep, offset, center):
     result = []
     str_result = []
-    if offset == False and not isinstance(offset, int):
-        return ls
+    if offset == False:
+        if offset is not isinstance(offset, int):
+            return ls
     elif offset == None and center == None:
         for i in range(len(ls)):
             key = get_midi_note("", center, ls[i])
@@ -840,7 +841,8 @@ def write_sfz(header, sfzgroup, filename, outpath):
 
         sfz_content += f"<control>\ndefault_path={sfz_outpath}\n" # get the last folder of the current path
     else:
-        sfz_content += f"<control>\n"
+        if header != "":
+            sfz_content += f"<control>\n"
 
     # insert header if user specified
     if header != "":
@@ -1026,6 +1028,29 @@ if __name__ == "__main__":
         case _:
             print(f"ERROR: SPREAD ARGUMENTS MORE THAN TWO")
             sys.exit(0)
+
+    # sfz options
+    try:
+        options_data = re.split(" ", args.options)
+        if len(options_data) != 0:
+            for i in range(len(options_data)):
+                match options_data[i]:
+                    case "metadata":
+                        metadata = True
+                    case "fix-endloop":
+                        endlp = 1
+                    case "byte-root":
+                        byte_note = True
+                        root = [None, None]
+                    case "fix-tune":
+                        fix_tune = True
+                    case "ignore-root":
+                        ign_root = True
+                        root = [None, False]
+                    case "key-verbose":
+                        key_verbose = True
+    except:
+        pass
     
     # collects the argument list variables
     for i in range(len(parse_data)):
@@ -1077,29 +1102,6 @@ if __name__ == "__main__":
     except:
         crv_ls = [None, None]
         minamp = None
-    
-    # sfz options
-    try:
-        options_data = re.split(" ", args.options)
-        if len(options_data) != 0:
-            for i in range(len(options_data)):
-                match options_data[i]:
-                    case "metadata":
-                        metadata = True
-                    case "fix-endloop":
-                        endlp = 1
-                    case "byte-root":
-                        byte_note = True
-                        root = [None, None]
-                    case "fix-tune":
-                        fix_tune = True
-                    case "ignore-root":
-                        ign_root = True
-                        root = [None, False]
-                    case "key-verbose":
-                        key_verbose = True
-    except:
-        pass
     
     veltype.append(crv_ls[0])
     veltype.append(minamp)
