@@ -165,7 +165,7 @@ def get_group_by_name(ls, str, sep, offset, name_off_ls):
 def sort_list_by_root(ls, sep, offset, center):
     result = []
     str_result = []
-    if offset == False:
+    if offset is False:
         if offset is not isinstance(offset, int):
             return ls
     elif offset == None and center == None:
