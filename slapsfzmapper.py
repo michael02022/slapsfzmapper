@@ -901,7 +901,7 @@ if __name__ == "__main__":
 
     chunk_ids = ("smpl", "MARK", "INST")
     file_ids = ("WAVE", "FORM")
-    formats = ('.wav', '.aiff', '.aif', '.aifc', '.flac', '.ogg')
+    formats = ('.wav', '.aiff', '.aif', '.aifc', '.flac', '.ogg', '.WAV', '.AIFF', '.AIF', '.AIFC', '.FLAC', '.OGG')
     
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--folderin", help="folder input")
